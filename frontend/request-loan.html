@@ -12,7 +12,7 @@
 
     <!---->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">RMS</a>
+      <a class="navbar-brand" href="/">RMS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,7 +27,7 @@
           </li>
           {{else if eq .AccessLevel 1 }}
           <li class="nav-item">
-            <a class="nav-link" href="/verify-loan">Verify</a>
+            <a class="nav-link" href="/review-loan">Review</a>
           </li>
           {{end}}
           <li class="nav-item dropdown">
@@ -56,35 +56,34 @@
 
     <!---->
     <div class="d-flex justify-content-center">
-    <form>
+    <form action="/request-loan-data" method="post">
+      <!--
+      -->
       <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+        <label for="loanSelect">Loan Type</label>
+        <select name="loanType" class="form-control" id="loanSelect">
+          <option value="KalaCard">KalaCard Loan</option>
+          <option value="Corona">Corona Loan</option>
+          <option value="Guarantor">Guarantor Loan</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlSelect2">Example multiple select</label>
-        <select multiple class="form-control" id="exampleFormControlSelect2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+        <label for="amountSelect">Amount</label>
+        <select name="loanAmount" class="form-control" id="amountSelect">
+          <option value="15,000,000 T">15,000,000 T</option>
+          <option value="45,000,000 T">45,000,000 T</option>
+          <option value="95,000,000 T">95,000,000 T</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="ControlTextarea1">Additional Notes:</label>
+        <textarea name="AdditionalNotes" class="form-control" id="ControlTextarea1" rows="5"></textarea>
       </div>
+      <div class="form-group">
+        <label for="ControlInput1">ObjectId: </label>
+        <input type="text" name="ObjectId" class="form-control" id="ControlInput1" placeholder="code">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     </div>
     <!---->

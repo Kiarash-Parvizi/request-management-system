@@ -44,31 +44,96 @@
           <li class="nav-item">
             <a class="nav-link" href="/signup">Signup</a>
           </li>
+          {{if eq .AccessLevel 0}}
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">Profile</a>
+          </li>
+          {{end}}
         </ul>
       </div>
     </nav>
     <br/><br/><br/>
 
-    <!---->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Field</th>
+          <th scope="col">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>PIN:</td>
+          <td>{{.PIN}}</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>FullName:</td>
+          <td>{{.FullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>User-Credits:</td>
+          <td>{{.Credits}}</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Loan-Type:</td>
+          <td>{{.LoanType}}</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Loan-Amount:</td>
+          <td>{{.Amount}}</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Additional-Notes:</td>
+          <td>{{.AdditionalNotes}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--UPIN    | LoanType  | Amount       | AdditionalNotes | RefObjectId-->
     <div class="d-flex justify-content-center">
     <p class="mb-0 px-2">
-      AccessLevel: {{.AccessLevel}}
-    </p>
+      PIN: {{.PIN}}
+    </p><br/>
     <p class="mb-0 px-2">
       FullName: {{.FullName}}
-    </p>
+    </p><br/>
     <p class="mb-0 px-2">
-      PhoneNumber: {{.PhoneNumber}}
-    </p>
+      User-Credits: {{.Credits}}
+    </p><br/><br/>
+
     <p class="mb-0 px-2">
-      PIN: {{.PIN}}
-    </p>
+      Loan Type : {{.LoanType}}
+    </p><br/>
     <p class="mb-0 px-2">
-      Credits: {{.Credits}}
-    </p>
+      Loan Amount: {{.Amount}}
+    </p><br/>
+    <p class="mb-0 px-2">
+      Additional Notes: {{.AdditionalNotes}}
+    </p><br/>
+    </div><br/>
+    <!---->
+
+    <!---->
+    <div class="d-flex justify-content-center">
+    <form action="/review-loan-data" method="POST">
+      <div class="form-check">
+        <input type="hidden" id="custId" name="RID" value={{.RID}}>
+        <input class="form-check-input" type="checkbox" name="RequestAccepted" value="True" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Request Accepted
+        </label>
+      </div>
+      <br/>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     </div>
 
-    <!-- Carousel wrapper -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   </body>
 </html>
